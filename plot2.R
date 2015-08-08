@@ -1,12 +1,11 @@
-## !!!!!!!!!!!!!!!   To my peer reviewer :  !!!!!!!!!!!!!!!
-## The x-axis tics are in the Dutch language.
-## I did not think that it was necessary for the assignment to chagne these to english
-## hope you agree !
-
-# my working directory
+# my personal working directory !! will not work on your computer !!
 setwd("c:/users/rene/desktop/exdata")
 
-# file already zipped with Winrar
+Sys.setlocale("LC_ALL", "English")
+
+
+# file already zipped with Winrar in the above mentioned workingdirectory
+# please change to yout own working directory if you want to run the code
 mydf <-read.table("household_power_consumption.txt", 
                   sep = ";", 
                   header = TRUE, 
@@ -21,11 +20,10 @@ mydf$DateTime <- as.POSIXct(mydf$DateTime, format  = "%d/%m/%Y %H:%M:%S")
 mydev = dev.cur()
 png(file = "plot2.png", width = 480, height = 480)   # to get the same png look as the screendevice look
 
-plot(mydf$DateTime,mydf$Global_active_power,
-     ylab="Global Active Power (kilowatts)", 
-     xlab="",
-     type="l" )
+plot(mydf$DateTime, mydf$Global_active_power,
+     ylab = "Global Active Power (kilowatts)", 
+     xlab = "",
+     type = "l" )
 
-#dev.copy(png, file="plot2.png") # this dit not correctly copy the screen to the png
 dev.off()
 dev.set(mydev)

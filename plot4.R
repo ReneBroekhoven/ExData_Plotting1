@@ -1,14 +1,16 @@
-# my working directory
+# my personal working directory !! will not work on your computer !!
 setwd("c:/users/rene/desktop/exdata")
 
-# file already zipped with Winrar
+Sys.setlocale("LC_ALL", "English") # to change from Dutch labels to English
+
+# file already zipped with Winrar in the above mentioned workingdirectory
+# please change to yout own working directory if you want to run the code
 mydf <-read.table("household_power_consumption.txt", 
                   sep = ";", 
                   header = TRUE, 
                   na.strings = "?", 
                   stringsAsFactors = FALSE)
 
-# as stated in project 1 only two dates : 
 mydf <- mydf[mydf$Date == "1/2/2007"| mydf$Date == "2/2/2007",]
 mydf$DateTime <- paste(mydf$Date, mydf$Time)
 
@@ -22,15 +24,15 @@ par(mfrow = c(2, 2), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
 
 ###   plot 1 ###
 plot(mydf$DateTime,mydf$Global_active_power,
-     ylab="Global Active Power", 
-     xlab="",
-     type="l")
+     ylab = "Global Active Power", 
+     xlab = "",
+     type = "l")
 
 ###   plot2   ###
 plot(mydf$DateTime,mydf$Voltage,
-     ylab="Voltage", 
-     xlab="datetime",
-     type="l")
+     ylab = "Voltage", 
+     xlab = "datetime",
+     type = "l")
 
 ###   plot3   ###
 plot(mydf$DateTime, mydf$Sub_metering_1,
@@ -59,7 +61,6 @@ plot(mydf$DateTime, mydf$Sub_metering_3,
 
 legend("topright", legend  = c(names(mydf)[7],names(mydf)[8],names(mydf)[9]), 
        text.col= c(1,2,4),
-       cex=1, 
        col = c(1,2,4),
        lty = 1, 
        bty = "n",
@@ -67,11 +68,10 @@ legend("topright", legend  = c(names(mydf)[7],names(mydf)[8],names(mydf)[9]),
 
 ###   plot4   ###
 plot(mydf$DateTime,mydf$Global_reactive_power,
-     ylab=names(mydf)[4], 
-     xlab="datetime",
-     type="l")
+     ylab = names(mydf)[4], 
+     xlab = "datetime",
+     type = "l")
 
-#dev.copy(png, file="plot4.png") # this dit not correctly copy the screen to the png
 dev.off()
 dev.set(mydev)
 

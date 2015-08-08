@@ -1,7 +1,10 @@
-# my working directory
+# my personal working directory !! will not work on your computer !!
 setwd("c:/users/rene/desktop/exdata")
 
-# file already zipped with Winrar
+Sys.setlocale("LC_ALL", "English")  # to change from Dutch labels to English
+
+# file already zipped with Winrar in the above mentioned workingdirectory
+# please change to yout own working directory if you want to run the code
 mydf <-read.table("household_power_consumption.txt", 
                   sep = ";", 
                   header = TRUE, 
@@ -19,6 +22,7 @@ mydf$DateTime <- as.POSIXct(mydf$DateTime, format  = "%d/%m/%Y %H:%M:%S")
 mydev = dev.cur()
 png(file = "plot3.png", width = 480, height = 480)   # to get the same png look as the screendevice look
 
+# I have used here the method of par(new=TRUE) to redraw a new plot on top of the other
 plot(mydf$DateTime, mydf$Sub_metering_1,
      ylab = "Energy sub metering ", 
      xlab = "",
@@ -49,6 +53,5 @@ legend("topright", legend  = c("Sub_metering_1", "Sub_metering_2", "Sub_metering
        lty = c(1,1,1), 
        pch = c(NA, NA, NA) )
 
-#dev.copy(png, file="plot3.png") # this dit not correctly copy the screen to the png
 dev.off()
 dev.set(mydev)
