@@ -3,8 +3,10 @@ setwd("c:/users/rene/desktop/exdata")
 
 Sys.setlocale("LC_ALL", "English")  # to change from Dutch labels to English
 
+mydev=dev.cur()
+
 # file already zipped with Winrar in the above mentioned workingdirectory
-# please change to yout own working directory if you want to run the code
+# please change to your own working directory if you want to run the code
 mydf <-read.table("household_power_consumption.txt", 
                   sep = ";", 
                   header = TRUE, 
